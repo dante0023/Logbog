@@ -1,0 +1,43 @@
+body {
+  background: rgb(2,0,36);
+background: linear-gradient(117deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+
+}
+
+/* overskrift h1 design */
+h1{
+font-style:italic;
+font-size: 60px;
+color: #FFEA8C;
+text-align: center;
+}
+h2{
+  color: white;
+}
+
+p{
+  color: white;
+}
+
+ul{
+  color: #FFEA8C;
+}
+
+a{
+  color: #FFEA8C;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: larger;
+}
+
+pre{
+  background-color: lightgray;
+}
+
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  box-shadow: 1px 1px 100px;
+}
