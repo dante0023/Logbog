@@ -1,0 +1,111 @@
+<div>Teachable Machine Image Model - p5.js and ml5.js</div>
+<script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/p5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/addons/p5.dom.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ml5@latest/dist/ml5.min.js"></script>
+<script type="text/javascript">
+  // Classifier Variable
+  let classifier;
+  // Model URL
+  let imageModelURL = './';
+  let img;
+  
+  // Video
+  let video;
+  let flippedVideo;
+  // To store the classification
+  let label = "";
+  let x=y=0;
+  let formx;
+  let formy;
+
+  // Load the model first
+  function preload() {
+    classifier = ml5.imageClassifier(imageModelURL + 'model.json');
+    
+    img = loadImage('Road.jpeg')
+  }
+
+  function setup() {
+    createCanvas(800, 800);
+    // Create the video
+    video = createCapture(VIDEO);
+    video.size(320, 240);
+    video.hide();
+
+    flippedVideo = ml5.flipImage(video);
+    // Start classifying
+    classifyVideo();
+
+    
+  }
+
+  function draw() {
+    background(img);
+    // Draw the video
+    image(flippedVideo, 0, 0);
+
+    // Draw the label
+    fill(255);
+    textSize(16);
+    textAlign(CENTER);
+    text(label, width / 2, height - 4);
+
+    if (label=="Venstre"){
+      x += -1;
+      formx = 30;
+      formy = 0;
+    }
+    if (label=="Hojre"){
+      x += 1;
+      formx = 30;
+      formy = 0;
+    }
+    if (label=="Ligeud"){
+      y += -1;
+      formy = 30;
+      formx = 0;
+    }
+    if (label=="Baggrund"){
+      x = x; 
+      formx = formx;
+      formy = formy;
+    }
+    if (label=="Stop"){
+      y += 1; 
+      formy = 30;
+      formx = 0;
+    }
+    if (x>800){
+      x = 0;
+      y = 0; 
+    }
+    if (y>800){
+      x = 0;
+      y = 0; 
+    }
+    rect(150+x,700+y,40+formx,40+formy);
+
+  }
+
+  // Get a prediction for the current video frame
+  function classifyVideo() {
+    flippedVideo = ml5.flipImage(video)
+    classifier.classify(flippedVideo, gotResult);
+    flippedVideo.remove();
+
+  }
+
+  // When we get a result
+  function gotResult(error, results) {
+    // If there is an error
+    if (error) {
+      console.error(error);
+      return;
+    }
+    // The results are in an array ordered by confidence.
+    // console.log(results[0]);
+    label = results[0].label;
+    // Classifiy again!
+    classifyVideo();
+  }
+</script>
