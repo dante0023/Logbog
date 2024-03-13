@@ -136,7 +136,36 @@ img:hover{
   display: block;
 }
 
-footer{
-  padding: 0px;
-  background-color: black;
+footer {
+  background-color: #000000;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.footer-content {
+  margin-bottom: 10px;
+}
+
+.footer-social a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+video {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  box-shadow: 1px 1px 100px;
+  transition: transform .2s;
+border-radius: 3px;
+}
+
+video:hover{
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
 }
