@@ -136,3 +136,22 @@ body {
   .dropdown:hover .dropdown-content {
     display: block;
   }
+
+
+footer {
+  background-color: #000000;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.footer-content {
+  margin-bottom: 10px;
+}
+
+.footer-social a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}

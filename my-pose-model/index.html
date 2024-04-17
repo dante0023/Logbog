@@ -3,6 +3,8 @@
 <script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/addons/p5.dom.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/ml5@latest/dist/ml5.min.js"></script>
 <script type="text/javascript">
+  
+  
   // Classifier Variable
   let classifier;
   // Model URL
@@ -17,12 +19,17 @@
   let x=y=0;
   let formx;
   let formy;
+  let bil;
 
   // Load the model first
   function preload() {
     classifier = ml5.imageClassifier(imageModelURL + 'model.json');
     
     img = loadImage('Road.jpeg')
+    bh = loadImage('Bilhøjre.png')
+    bl = loadImage('Billigeud.png')
+    bs = loadImage('Bilstop.png')
+    bv = loadImage('Bilvenstre.png')
   }
 
   function setup() {
@@ -54,26 +61,39 @@
       x += -1;
       formx = 30;
       formy = 0;
+
+      bil = 1;
+      
     }
     if (label=="Hojre"){
       x += 1;
       formx = 30;
       formy = 0;
+
+      bil = 2;
     }
     if (label=="Ligeud"){
       y += -1;
       formy = 30;
       formx = 0;
+
+      bil = 3;
+
     }
     if (label=="Baggrund"){
       x = x; 
       formx = formx;
       formy = formy;
+
+      bil = bil;
+      
     }
     if (label=="Stop"){
       y += 1; 
       formy = 30;
       formx = 0;
+      
+      bil = 4;
     }
     if (x>800){
       x = 0;
@@ -83,8 +103,29 @@
       x = 0;
       y = 0; 
     }
-    rect(150+x,700+y,40+formx,40+formy);
+    //rect(150+x,700+y,40+formx,40+formy);
+    //image(bs,150+x,700+y,40+formx,40+formy);
+    //bil = 1, betyder venstre
+    if (bil==1){
+      image(bv,150+x,700+y,40+formx,40+formy);
+      
+    }
+    //bil = 2, betyder højre
+    if (bil==2){
+      image(bh,150+x,700+y,40+formx,40+formy);
+      
+    }
+    //bil = 3, betyder ligeud
+    if (bil==3){
+      image(bl,150+x,700+y,40+formx,40+formy);
 
+    }
+    //bil = 4, betyder venstre
+    if (bil==4){
+      image(bs,150+x,700+y,40+formx,40+formy);
+
+    }
+    
   }
 
   // Get a prediction for the current video frame
