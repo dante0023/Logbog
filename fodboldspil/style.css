@@ -1,7 +1,7 @@
 
 body {
-  background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 40%, rgba(0,126,255,1) 100%);
-  padding: 12px;
+  background: linear-gradient(180deg, rgb(255, 255, 255) 0%, #0057da 0%, rgba(0,126,255,1) 83%, rgba(2,0,36,1) 100%);
+padding: 12px;
   }
   
   /* overskrift h1 design */
