@@ -1,0 +1,76 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFD166;
+}
+
+.card {
+    height: 300px;
+    width: 300px;
+    position: relative;
+    transition: all 0.4s linear;
+    transform-style: preserve-3d;
+
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.497);
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.front,
+.back {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.front {
+    background-color: #49e5bc;
+    z-index: 2;
+    backface-visibility: hidden;
+}
+
+.back { 
+    background-color: #53ffd1;
+    z-index: 1;
+    transform: rotateY(180deg);
+}
+
+.container:hover .card{
+    transform: rotateY(180deg);
+}
+
+.container {
+    perspective: 1000px;
+}
+
+button {
+    background-color: #EF476F;
+    border: none;
+    color: white;
+    padding: 15px 23px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px;
+ 
+  }
+
+button:hover{
+    background-color: #FFFCF9;
+    color: black;
+}
